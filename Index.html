@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meine Streams & Chats</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0e0e10;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #18181b;
+            display: flex;
+            justify-content: center;
+            padding: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .tab-btn {
+            background-color: transparent;
+            color: #adadb8;
+            border: none;
+            padding: 10px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 0 10px;
+            transition: all 0.2s;
+        }
+        .tab-btn:hover {
+            color: #ffffff;
+            background-color: #26262b;
+        }
+        .tab-btn.active {
+            color: #ffffff;
+            background-color: #9146ff;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        h1 {
+            text-align: center;
+            color: #9146ff;
+            margin-top: 10px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .stream-box {
+            background: #18181b;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 560px;
+            max-width: 100%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        .chat-box {
+            background: #18181b;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 450px;
+            max-width: 100%;
+            height: 600px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+        }
+        .stream-title {
+            padding: 10px 15px;
+            font-size: 18px;
+            font-weight: bold;
+            background: #26262b;
+        }
+        .player-wrapper {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            width: 100%;
+        }
+        .chat-wrapper {
+            position: relative;
+            flex-grow: 1;
+            width: 100%;
+        }
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .tiktok-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+            background: #18181b;
+            border-radius: 8px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        .btn-tiktok {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: #fe2c55;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Obere Menüleiste -->
+    <nav>
+        <button class="tab-btn active" onclick="openTab(event, 'streamsTab')">Streams</button>
+        <button class="tab-btn" onclick="openTab(event, 'chatsTab')">Chats</button>
+        <button class="tab-btn" onclick="openTab(event, 'tiktokTab')">TikTok Live</button>
+    </nav>
+
+    <!-- Reiter 1: Streams -->
+    <div id="streamsTab" class="tab-content active">
+        <h1>Live Streams</h1>
+        <div class="container">
+            <div class="stream-box">
+                <div class="stream-title">venomsnake_twitch</div>
+                <div class="player-wrapper">
+                    <iframe src="https://player.twitch.tv/?channel=venomsnake_twitch&parent=dein-github-name.github.io" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="stream-box">
+                <div class="stream-title">DE_OuterHeaven_TV</div>
+                <div class="player-wrapper">
+                    <iframe src="https://player.twitch.tv/?channel=de_outerheaven_tv&parent=dein-github-name.github.io" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reiter 2: Chats (im Dark Mode) -->
+    <div id="chatsTab" class="tab-content">
+        <h1>Twitch Chats</h1>
+        <div class="container">
+            <div class="chat-box">
+                <div class="stream-title">Chat: venomsnake_twitch</div>
+                <div class="chat-wrapper">
+                    <iframe src="https://www.twitch.tv/embed/venomsnake_twitch/chat?parent=dein-github-name.github.io&darkpopout"></iframe>
+                </div>
+            </div>
+            <div class="chat-box">
+                <div class="stream-title">Chat: DE_OuterHeaven_TV</div>
+                <div class="chat-wrapper">
+                    <iframe src="https://www.twitch.tv/embed/de_outerheaven_tv/chat?parent=dein-github-name.github.io&darkpopout"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reiter 3: TikTok -->
+    <div id="tiktokTab" class="tab-content">
+        <h1>TikTok Live</h1>
+        <div class="tiktok-center">
+            <p style="color: #aaa; line-height: 1.5;">Klicke hier, um deinen TikTok-Livestream zu öffnen:</p>
+            <a href="https://www.tiktok.com/@venomsnaketiktok/live" target="_blank" class="btn-tiktok">TikTok Live öffnen</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            window.openTab = function(evt, tabName) {
+                let contents = document.getElementsByClassName("tab-content");
+                for (let i = 0; i < contents.length; i++) {
+                    contents[i].classList.remove("active");
+                }
+                let buttons = document.getElementsByClassName("tab-btn");
+                for (let i = 0; i < buttons.length; i++) {
+                    buttons[i].classList.remove("active");
+                }
+                document.getElementById(tabName).classList.add("active");
+                evt.currentTarget.classList.add("active");
+            };
+        });
+    </script>
+
+</body>
+</html>
